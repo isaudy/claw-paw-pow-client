@@ -60,8 +60,7 @@ const onSignOut = function (event) {
 }
 
 const onNewGame = function (event) {
-  // event.preventDefault()
-
+  event.preventDefault()
   // send the data to the api
   api.newGame()
     // handle successful response
@@ -70,10 +69,30 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
+const onUpdateGame = function (event) {
+  // send the data to the api
+  api.updateGame()
+    // handle successful response
+    .then(ui.updateGameSuccess)
+    // handle failed response
+    .catch(ui.updateGameFailure)
+}
+
+const onViewGames = function (event) {
+  // send the data to the api
+  api.viewGames()
+    // handle successful response
+    .then(ui.viewGameSuccess)
+    // handle failed response
+    .catch(ui.viewGameFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onNewGame
+  onNewGame,
+  onUpdateGame,
+  onViewGames
 }

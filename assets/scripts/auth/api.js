@@ -48,10 +48,28 @@ const newGame = function (data) {
   })
 }
 
+const viewGames = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    data: data
+  })
+}
+
+const updateGame = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games/:id',
+    method: 'PATCH',
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  newGame
+  newGame,
+  viewGames,
+  updateGame
 }

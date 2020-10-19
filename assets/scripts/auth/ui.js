@@ -2,16 +2,16 @@
 
 const store = require('./../store')
 
-const signUpSuccess = function(response) {
+const signUpSuccess = function (response) {
   $('#message').text('Thanks for signing up ' + response.user.email)
   $('#sign-up-form').hide()
 }
 
-const signUpFailure = function(error) {
+const signUpFailure = function () {
   $('#message').text('Sign up failed, try again')
 }
 
-const signInSuccess = function(response) {
+const signInSuccess = function (response) {
   $('#message').text('Your token is ' + response.user.token)
   // save user in the api resonse to our store object
   store.user = response.user
@@ -54,6 +54,22 @@ const onNewGameFailure = function (response) {
   $('#message').text('Insert More Quarters')
 }
 
+const onUpdateGameSuccess = function (response) {
+  $('#message').text('Game Updated')
+}
+
+const onUpdateGameFailure = function (response) {
+  $('#message').text('Update Failure')
+}
+
+const onViewGameSuccess = function (response) {
+  $('#message').text('Game Updated')
+}
+
+const onUViewGameFailure = function (response) {
+  $('#message').text('Update Failure')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -64,5 +80,9 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onNewGameSuccess,
-  onNewGameFailure
+  onNewGameFailure,
+  onUpdateGameSuccess,
+  onUpdateGameFailure,
+  onUViewGameFailure,
+  onViewGameSuccess
 }
