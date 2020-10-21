@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Claw Paw Pow</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+
+  <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="script.js" defer></script>
+
+  </head>
+
+<body>
+  <div class="heading" id="mainHeading">
+
+  <div class="heading-container">
+  <div class="tittle"><h1>Claw  /  Paw  /  Pow!</h1></div>
+  <!-- <div class="tittle"><h1>/</h1></div>
+  <div class="tittle"><h1>Paw</h1></div>
+  <div class="tittle"><h1>/</h1></div>
+  <div class="tittle"><h1>Pow!</h1></div> -->
+  </div>
+  </div>
+
+<div class="subheading" id="subheading">
+  <div class="subtittle" id="subtittle">
+  <h3>An Eternal Battle Between Canine & Feline</h3>
+  </div>
+
+</div>
+
+  <div class="message-container" id="messageContainer">
+  <h4 id="message"></h4>
+  </div>
+
+<div class="initialize" id="initialize">
+<img src="/images/puppyVcat.png" alt="Cat and puppy play fighting">
+<button class="newGameButton-initial" id="newGameButton-initial">New Game</button>
+</div>
+
+<div class="initial-credentials" id="signInFormDivId">
+  <form class="border" id="sign-up-form" >
+    <fieldset>
+      <legend>Sign Up!</legend>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="submit" value="Sign up!">
+    </fieldset>
+  </form>
+  <br>
+    <form class="border" id="signInForm">
+      <fieldset>
+        <legend>Sign In!</legend>
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="submit" value="Sign in!">
+      </fieldset>
+    </form>
+</div>
+
+<div class="board" id="board">
+  <!-- place scoreboard here or next to subtittle -->
+      <!-- <div class="scoreboard" id= scoreboard></div> -->
+      <div id="0" class="cell" data-cell-index='0'></div>
+      <div id="1" class="cell" data-cell-index='1'></div>
+      <div id="2" class="cell" data-cell-index='2'></div>
+      <div id="3" class="cell" data-cell-index='3'></div>
+      <div id="4" class="cell" data-cell-index='4'></div>
+      <div id="5" class="cell" data-cell-index='5'></div>
+      <div id="6" class="cell" data-cell-index='6'></div>
+      <div id="7" class="cell" data-cell-index='7'></div>
+      <div id="8" class="cell" data-cell-index='8'></div>
+    </div>
+
+    <div class="winning-message" id="winningMessage">
+      <!-- add image for winning game display -->
+      <!-- <img id="drawImage" src="/images/draw2.jpg" alt="Cat and puppy play fighting"> -->
+      <!-- <img id="dogsWinImage" src="/images/dogsWin.png" alt="Cat and puppy play fighting"> -->
+      <!-- <img id="catsWinImage" src="/images/catsWin.png" alt="Cat and puppy play fighting"> -->
+      <div data-winning-message-text></div>
+      <form>
+        <input id="newGameButton" type="submit" value="New Game!">
+      </form>
+    </div>
+
+    <!-- work in progress: hide and show on signIn -->
+    <!-- <div class="scoreButtonContainer" id="scoreButtonContainer">
+      <form id="scoreboardForm" class="border">
+        <fieldset>
+          <input id="scoreboardButton" type="submit" value="What is the Score?!">
+        </fieldset>
+      </form>
+    </div> -->
+
+<div class="changePass-signOut" id="changePass-signOut">
+  <div class="post-credentials" id="ChangePassword">
+    <form id="change-password-form" class="border">
+      <fieldset>
+        <legend>Change Password!</legend>
+        <input type="password" name="passwords[old]" placeholder="Old Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <input type="submit" value="Change Password!">
+      </fieldset>
+    </form>
+    <button class="changePasswordButton" hidden="true" id="changePasswordButton">Change Password</button>
+
+  </div>
+
+  <button class="signOutButton" hidden="true" id="signOutButton">Sign Out</button>
+
+  <div class="post-credentials" id="signOut">
+    <form id="sign-out-form" class="border">
+      <fieldset>
+        <legend>Sign Out!</legend>
+        <input type="submit" value="Sign out!">
+      </fieldset>
+    </form>
+  </div>
+</div>
+ </body>
+
+</html>
