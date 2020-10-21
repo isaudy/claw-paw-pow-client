@@ -1,11 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
+/* @import '~bootstrap/scss/bootstrap'; */
 
 *, *::after, *::before {
   box-sizing: border-box;
 }
-
+/*root targets the html(when in html), below it is used to control the size of
+board game*/
 :root {
+  /* used to calculate the size of the screen and create a proportional game board.
+  more information: https://www.w3schools.com/cssref/css_units.asp */
   --cell-size: 100px;
+  /*variable created to recall perfect dimensions in the game*/
   --mark-size: calc(var(--cell-size) * .9);
 }
 
@@ -14,14 +18,28 @@ body {
 }
 
 .board {
+  /* "vh" & "vw" are used to create a porportional element to the size of the screen.
+  more information: https://www.w3schools.com/cssref/css_units.asp*/
   width: 100vw;
   height: 100vh;
   display: grid;
+  position: relative;
+  top: -20;
+  left: 0;
+  right: 3;
+  bottom: 20;
   justify-content: center;
   align-content: center;
-  justify-items: center;
+  /* justify-items: center; */
   align-items: center;
-  grid-template-columns: repeat(3, auto)
+  grid-template-columns: repeat(3, auto);
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  /* controls the color of the X/O before pressing, on hover */
+  background-color: lightgrey;
 }
 
 .cell {
@@ -57,19 +75,15 @@ body {
 
 .cell.x,
 .cell.circle {
-  cursor: not-allowed;
+  /* hides the cursor after selecting an option */
+  cursor: none;
 }
 
 .cell.x::before,
 .cell.x::after,
 .cell.circle::before {
+  /* Controls the color of the buttons after pressing */
   background-color: black;
-}
-
-.board.x .cell:not(.x):not(.circle):hover::before,
-.board.x .cell:not(.x):not(.circle):hover::after,
-.board.circle .cell:not(.x):not(.circle):hover::before {
-  background-color: lightgrey;
 }
 
 .cell.x::before,
@@ -114,6 +128,118 @@ body {
   background-color: white;
 }
 
+.heading {
+  /* font-size: 20px; <- play with vh, vw */
+  /* justify-content: center;
+  align-content: center; */
+  /* align-items: center; */
+  text-align: center;
+  color: white;
+}
+
+.heading-container {
+  display: flex;
+  background-color: #4CAF50;
+  justify-content: center;
+  align-items: baseline;
+  margin: 10px;
+  padding: 20px;
+}
+
+.heading-container > title {
+  display: inline-flex;
+  background-color: #4CAF50;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  border-left: none;
+  border-right: none;
+  margin: 10px;
+  padding: 20px;
+  font-size: 3.5vw;
+}
+
+.message {
+  display: flex;
+  background-color: #4CAF50;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  border-left: none;
+  border-right: none;
+  margin: 10px;
+  padding: 20px;
+  font-size: 3.5vw;
+}
+
+/* controls the container which holds the new game button and img */
+.initialize {
+  margin: auto;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.initialize > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50% */
+  width: 500px;
+  width: 50vh;
+  margin-top: 20px;
+}
+
+.initial-credentials {
+  flex: auto;
+  display: block;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.subheading {
+  display: flex;
+  justify-content: center;
+  /* align-self: auto | flex | center | center | flex */
+  text-align: center;
+  font-size: 2vh;
+  color: green;
+}
+
+.newGameButton-initial {
+width: 80%;
+background-color: #4CAF50;
+color: white;
+border-radius: 12px;
+padding: 15px 32px;
+font-size: 4vh;
+margin-top: 35px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+border: none;
+}
+
+.newGameButton-initial:hover {
+  background-color: white;
+  border: 3px solid #4CAF50;
+  color: black;
+  width: 80%;
+  border-radius: 12px;
+  padding: 15px 32px;
+  font-size: 4vh;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  /* align-self: auto | flex | center | center | flex */
+  text-align: center;
+  font-size: 1.2vh;
+  color: green;
+}
+
 .winning-message {
   display: none;
   position: fixed;
@@ -121,7 +247,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, .7);
   justify-content: center;
   align-items: center;
   color: white;

@@ -43,6 +43,9 @@ const signOut = function () {
 const newGame = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
     method: 'POST',
     data: data
   })
@@ -50,7 +53,7 @@ const newGame = function (data) {
 
 const viewGames = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games/:id',
     method: 'GET',
     data: data
   })

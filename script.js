@@ -1,5 +1,12 @@
+'use strict'
+// Game code pulled from this git: https://github.com/WebDevSimplified/JavaScript-Tic-Tac-Toe
+// simple game java and board
+// complex css, but excellent study material
+
+// does game moves get logged here??
 const X_CLASS = 'x'
 const CIRCLE_CLASS = 'circle'
+
 const WINNING_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -10,16 +17,18 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-const cellElements = document.querySelectorAll('[data-cell]')
+
+const cellElements = document.querySelectorAll('[data-cell-index]')
+
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
-const restartButton = document.getElementById('restartButton')
+const newGameButton = document.getElementById('newGameButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn
 
 startGame()
 
-restartButton.addEventListener('click', startGame)
+newGameButton.addEventListener('click', startGame)
 
 function startGame () {
   circleTurn = false
@@ -29,10 +38,12 @@ function startGame () {
     cell.removeEventListener('click', handleClick)
     cell.addEventListener('click', handleClick, { once: true })
   })
+
   setBoardHoverClass()
   winningMessageElement.classList.remove('show')
 }
 
+// e = shorthand for error
 function handleClick (e) {
   const cell = e.target
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
@@ -51,7 +62,7 @@ function endGame (draw) {
   if (draw) {
     winningMessageTextElement.innerText = 'They Fought To the Death!'
   } else {
-    winningMessageTextElement.innerText = `${circleTurn ? 'Cats' : 'Dogs'} Wins!`
+    winningMessageTextElement.innerText = `${circleTurn ? 'Claws' : 'Paws'} Win!`
   }
   winningMessageElement.classList.add('show')
 }
@@ -60,6 +71,7 @@ function isDraw () {
   return [...cellElements].every(cell => {
     return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
   })
+
 }
 
 function placeMark (cell, currentClass) {
@@ -68,6 +80,7 @@ function placeMark (cell, currentClass) {
 
 function swapTurns () {
   circleTurn = !circleTurn
+  // whose turn it is
 }
 
 function setBoardHoverClass () {

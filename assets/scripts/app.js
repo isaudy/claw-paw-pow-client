@@ -7,11 +7,32 @@ const events = require('./auth/events')
 
 $(() => {
   // your JS code goes here
-  $('#new-game-form').on('click', events.onNewGame)
+  $('#newGameButton').on('click', events.onNewGame)
   $('#sign-up-form').on('submit', events.onSignUp)
-  $('#sign-in-form').on('submit', events.onSignIn)
+  $('#signInForm').on('submit', events.onSignIn)
   $('#change-password-form').on('submit', events.onChangePassword)
   $('#sign-out-form').on('submit', events.onSignOut)
+
+  // used for scoreboard button press to recall and display score
+  $('#scoreboardButton').on('click', events.onViewGames)
+
+  // log and update moves section
+  // used to log square presses
+  $('#scoreboardButton').on('click', events.onViewGamesGame)
+  $('#data-cell').on('click', events.onUpdateMove)
+
+  // hide elements until signin action is taken to show them.
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
+  // hide scoreboard
+  $('scoreboardForm').hide()
+
+  // below elements are hidden until "newGameButton-initialize" button is pressed"
+  $('#board').hide()
+  $('#sign-up-form').hide()
+  $('#signInForm').hide()
+
+  // useless until we replace form with button to reveal them
+  $('changePasswordButton').hide()
+  $('signOutButton').hide()
 })

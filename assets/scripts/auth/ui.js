@@ -2,23 +2,46 @@
 
 const store = require('./../store')
 
-const signUpSuccess = function (response) {
-  $('#message').text('Thanks for signing up ' + response.user.email)
-  $('#sign-up-form').hide()
-}
+// toggle feature, pulled from: https://www.pair.com/support/kb/how-to-use-jquery-to-show-hide-a-form-on-click/
+// shows sign-up / sign-in and hides image plus button.
+$(document).ready(function () {
+  $('#newGameButton-initial').click(function () {
+    $('#sign-up-form').show()
+    $('#signInForm').show()
+    $('#initialize').hide()
+  })
+})
+
+// this is for hiding and showing changepassword form; play with feature if extra time.
+// $(document).click(function () {
+//   $('#changePasswordButton').click(function () {
+//     $('#change-password-form').show()
+//     $('#changePasswordButton').hide()
+//   })
+// })
 
 const signUpFailure = function () {
   $('#message').text('Sign up failed, try again')
 }
 
+const signUpSuccess = function (response) {
+  $('#message').text('Thanks for signing up ' +
+  response.user.email)
+  $('#sign-up-form').hide()
+}
+
 const signInSuccess = function (response) {
-  $('#message').text('Your token is ' + response.user.token)
+  $('#message').text('Your token is ' +
+  response.user.token)
   // save user in the api resonse to our store object
   store.user = response.user
   $('#change-password-form').show()
   $('#sign-out-form').show()
   $('#sign-up-form').hide()
-  $('#sign-in-form').hide()
+  $('#signInForm').hide()
+  $('#board').show()
+  $('#signOutButton').show()
+  $('#changePasswordButton').show()
 }
 
 const signInFailure = function () {
@@ -38,8 +61,8 @@ const onSignOutSuccess = function () {
   store.user = null
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
-  $('#sign-up-form').show()
-  $('#sign-in-form').show()
+  $('#board').hide()
+  $('#initialize').hide()
 }
 
 const onSignOutFailure = function () {
@@ -48,14 +71,28 @@ const onSignOutFailure = function () {
 
 const onNewGameSuccess = function (response) {
   $('#message').text('New Game ' + response.user.email)
+// have to first count games then recall it from api.
+// numOfGame.
+  // store.games.length = numOfGames.
 }
 
 const onNewGameFailure = function (response) {
   $('#message').text('Insert More Quarters')
 }
 
+const onDrawSuccess = function (response) {
+  $('#message').text('It is a draw!')
+}
+
+const onDrawFailure = function (response) {
+  $('#message').text('This failed, they ' +
+  'have taken the battle elsewhere!')
+}
+
 const onUpdateGameSuccess = function (response) {
   $('#message').text('Game Updated')
+  $('#sign-up-form').show()
+  $('#signInForm').show()
 }
 
 const onUpdateGameFailure = function (response) {
@@ -63,11 +100,20 @@ const onUpdateGameFailure = function (response) {
 }
 
 const onViewGameSuccess = function (response) {
-  $('#message').text('Game Updated')
+  $('#message').text('Games Played:' +
+  response.games.length)
 }
 
-const onUViewGameFailure = function (response) {
-  $('#message').text('Update Failure')
+const onViewGameFailure = function (response) {
+  $('#message').text('View Games Failure')
+}
+
+const onUpdateMoveSuccess = function (response) {
+  $('#message').text('Update Move Failure')
+}
+
+const onUpdateMoveFailure = function (response) {
+  $('#message').text('Update Move Failure')
 }
 
 module.exports = {
@@ -83,6 +129,10 @@ module.exports = {
   onNewGameFailure,
   onUpdateGameSuccess,
   onUpdateGameFailure,
-  onUViewGameFailure,
-  onViewGameSuccess
+  onViewGameFailure,
+  onViewGameSuccess,
+  onDrawSuccess,
+  onDrawFailure,
+  onUpdateMoveSuccess,
+  onUpdateMoveFailure
 }
