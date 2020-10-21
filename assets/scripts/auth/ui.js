@@ -12,6 +12,7 @@ $(document).ready(function () {
   })
 })
 
+// TO-DO
 // this is for hiding and showing changepassword form; play with feature if extra time.
 // $(document).click(function () {
 //   $('#changePasswordButton').click(function () {

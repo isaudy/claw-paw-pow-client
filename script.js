@@ -58,11 +58,15 @@ function handleClick (e) {
   }
 }
 
+// decides game /  update: add picture to winning page
 function endGame (draw) {
   if (draw) {
     winningMessageTextElement.innerText = 'They Fought To the Death!'
+    // $('drawImage').hide()
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? 'Claws' : 'Paws'} Win!`
+    // $('dogsWinImage').hide()
+    // $('catsWinImage').hide()
   }
   winningMessageElement.classList.add('show')
 }
@@ -71,7 +75,6 @@ function isDraw () {
   return [...cellElements].every(cell => {
     return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
   })
-
 }
 
 function placeMark (cell, currentClass) {

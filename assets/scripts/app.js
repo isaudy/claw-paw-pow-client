@@ -35,4 +35,12 @@ $(() => {
   // useless until we replace form with button to reveal them
   $('changePasswordButton').hide()
   $('signOutButton').hide()
+
+  // images on winningMessage display hidden and then shown on outcome
+  $('drawImage').hide()
+  $('dogsWinImage').hide()
+  $('catsWinImage').hide()
+
+  // forms are hidden but we should clear them anyway
+  // found the code $('#id')[0].reset()
 })
