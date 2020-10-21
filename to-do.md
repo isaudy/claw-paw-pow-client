@@ -20,3 +20,11 @@
 4) if possible, find code for computer playing "O"
 
 5) polish this project as it will be displayed for future employers.
+
+## tudy from others
+- styling a form with bootstrap
+- antonio's picture for box
+- turning the whole thing into an 8 bit arcade game
+- forms on buttons
+- api communication -> deep dive
+- javascript logic and code -> deep dive
